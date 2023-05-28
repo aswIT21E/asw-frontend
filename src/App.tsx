@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-
-function App() {
+function App({ children }: { children: ReactNode }) {
   return (
-    <div className="App">
-      
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        {children}
+      </div>
+    </BrowserRouter>
   );
 }
 
