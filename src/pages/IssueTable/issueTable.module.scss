@@ -1,0 +1,161 @@
+.table {
+    width: 90%;
+    margin: 0 auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+  
+    th,
+    td {
+      padding: 8px;
+      margin-top: 10px;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  
+    td:first-child {
+      text-align: LEFT;
+    }
+  }
+  
+  .issueList {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+    padding-top: 50px;
+  }
+  
+  thead {
+    padding-top: 50px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      justify-content: center;
+    }
+  
+    th:nth-child(-n + 3),
+    td:nth-child(-n + 3) {
+      text-align: left;
+    }
+  
+    th:nth-last-child(-n + 3),
+    td:nth-last-child(-n + 3) {
+      text-align: right;
+    }
+  
+    th {
+      color: black;
+      font-weight: bold;
+    }
+  
+    tbody {
+  
+      .issue {
+        align-items: center;
+      }
+  
+      .informacion {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+  
+        .numero-peticion {
+          font-weight: bold;
+        }
+  
+        .texto-peticion {
+          a {
+            color: blue;
+            text-decoration: none;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+  
+      .estado,
+      .fecha-creacion {
+        margin-left: 1em;
+      }
+  
+      .fecha-creacion {
+        display: flex;
+        align-items: center;
+  
+        img {
+          width: 25px;
+          height: 25px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+.bug {
+    background-color: red;
+  }
+  
+  .pregunta {
+    background-color: rgb(6, 42, 247);
+  }
+  
+  .mejora {
+    background-color: green;
+  }
+  
+  /* Estilo para pending */
+  .wishlist {
+    background-color: grey;
+  }
+  
+  /* Estilos para gravedad */
+  .minor {
+    background-color: blue;
+  }
+  
+  .normal {
+    background-color: green;
+  }
+  
+  .important {
+    background-color: orange;
+  }
+  
+  .critical {
+    background-color: red;
+  }
+  
+  /* Estilos para prioridad */
+  .low {
+    background-color: green;
+  }
+  
+  .normal {
+    background-color: orange;
+  }
+  
+  .high {
+    background-color: red;
+  }
+  
+  /* Estilos para bolas */
+  .issue-ball {
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  

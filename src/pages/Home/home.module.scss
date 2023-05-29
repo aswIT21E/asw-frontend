@@ -16,14 +16,50 @@ body {
     justify-content: space-around;
 
   }
-  
+ .table {
+  width: 100%;
+  height: 100%;
+
+  .issueList {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .header {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid gray;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    tbody {
+      tr:nth-child(even) {
+        background-color: #f1f1f1;
+      }
+    }
+  }
+}
+
   .search-filter {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: rgb(249, 255, 255);
-    padding: 10px;
     width: 100%;
     max-width: 900px;
     margin-top: 20px;
@@ -38,8 +74,10 @@ body {
   
   .search-input {
     flex-grow: 1;
-    padding-left: 1.2rem;
+    padding-left: 0.5rem;
     margin-right: 10px;
+    width: 300px;
+    padding: 7px;
   }
 
   .search-form{
@@ -48,24 +86,50 @@ body {
   .search-icon{
 
     padding-left: 2px;
-  position: absolute;
   top: 7.2rem;
   color: gray;
+  padding-right: 4px
   }
 
   
   .search-button {
-    background-color: #008aa8;
-    color: white;
+    background-color: #d8dee9;
+    color: #008aa8;
     border: none;
+    padding: 10px;
     
     border-radius: 5px;
-    padding: 5px 10px;
     font-size: 12px;
     cursor: pointer;
     min-width: fit-content;
+    justify-content: space-around;
+    gap: 5px;
+    display: inline-flex;
+    margin: 10px;
   }
-  
+  .filter-container{
+    display: flex;
+    width: 85%;
+    justify-content: center;
+  }
+  ul{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+  .options{
+    padding-top: 50px !important ;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
   .profile-button {
     display: flex;
     align-items: center;
@@ -99,6 +163,9 @@ body {
     text-align: center;
     white-space: nowrap;
   }
+  .issue-heading{
+    color: #008aa8
+  }
   
   .new-issue-button,
   .bulk-button {
@@ -121,3 +188,120 @@ body {
     border-radius: 5px;
   }
   
+  /* Sidebar.module.css */
+.sidebar {
+  width: 200px;
+  padding: 10px;
+}
+.option{
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  flex: 1;
+  padding: 0.4rem;
+  text-align: left;
+  border-left: #000;
+  cursor: pointer;
+  &:hover{
+    background-color: #f9f9fb;
+  }
+  // border-left: 4px solid red;
+  padding-left: 10px;
+
+  .bug{
+    border-left: 4px solid red;
+    padding-left: 10px;
+  }
+
+}
+
+.option.bug {
+  border-left: 4px solid red !important;
+}
+
+.option.question {
+  border-left: 4px solid blue;
+}
+
+.option.enhancement {
+  border-left: 4px solid green;
+}
+
+
+.option.wishlist {
+  border-left: 4px solid grey;
+}
+
+/* Estilos para gravedad */
+.option.minor {
+  border-left: 4px solid blue;
+}
+
+.option.normal {
+  border-left: 4px solid green;
+}
+
+.option.important {
+  border-left: 4px solid orange;
+}
+
+.option.critical {
+  border-left: 4px solid red;
+}
+
+.option.low {
+  border-left: 4px solid green;
+}
+
+.option.normal {
+  border-left: 4px solid orange;
+} 
+
+.option.high {
+  border-left: 4px solid red;
+}
+
+
+.options ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.options li {
+  margin-bottom: 10px;
+}
+
+.options button {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.buttonOps{
+  justify-content: space-between;
+  display: flex;
+  padding: 10px;
+}
+
+.options button:hover {
+  text-decoration: underline;
+}
+
+.subOptions ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.subOptions li {
+  margin-bottom: 5px;
+}
+
+.title {
+  font-weight: bold;
+}
