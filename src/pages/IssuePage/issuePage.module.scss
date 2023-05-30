@@ -1,0 +1,818 @@
+* {
+    box-sizing: border-box;
+    font-family: Ubuntu, Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-width: 1000px;
+}
+
+.master {
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+.editableText{
+  padding: 5px 2px 5px 2px;
+}
+
+.edit-icon-wrapper{
+  padding-left: 0.5rem; 
+  color: #4c566a; 
+  font-size: 0.8rem;
+  opacity: 0;
+
+}
+.edit-icon-wrapper:hover{
+  padding-left: 0.5rem; 
+  color: #4c566a; 
+  font-size: 0.8rem;
+  opacity: 1;
+}
+
+.edit-icon-wrapper-subject{
+  color: #4c566a; 
+  padding-left: 0.5rem; 
+  font-size: 1rem;
+  opacity: 0;
+
+}
+.edit-icon-wrapper-subject:hover{
+  color: #4c566a; 
+  padding-left: 0.5rem; 
+  font-size: 1rem;
+  opacity: 1;
+}
+
+.main {
+    /*background: #f1f1f4;*/
+    padding: 0;
+    width: 70%;
+
+}
+
+.header-container{
+    display: flex;
+    margin: 0 0 0.5rem;
+    position: relative;
+    background: #fff;
+    padding: 1rem;
+}
+
+.detail-header {
+    flex: 1;
+    flex-grow: 1;
+}
+
+.detail-title {
+    display: flex;
+    margin: 0 2rem 0.5rem 0;
+}
+
+.title {
+    font-size: 1.7rem;
+    align-items: baseline;
+    color: #2e3440;
+    display: flex;
+    line-height: 2rem;
+    margin: 0;
+}
+
+.ref {
+    flex-shrink: 1;
+    font-family: Ubuntu-Medium,Arial,Helvetica,sans-serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: #008aa8;
+    margin-right: 0.5rem;
+}
+
+.subject {
+    color: #2e3440;
+    flex-grow: 1;
+    word-break: break-word;
+}
+
+.detail-project {
+    font-family: Ubuntu-Regular,Arial,Helvetica,sans-serif;
+    color: #2e3440;
+    display: flex;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
+
+.subheader {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.created-by {
+    flex-shrink: 1;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.created-by a {
+    text-decoration: none;
+    color: #008aa8;
+}
+
+.detail-content {
+    background: #fff;
+    padding: 1rem;
+}
+
+.duty-content {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.description {
+    width: auto;
+    min-width: 50px;
+    height: auto;
+    min-height: 20px;
+    padding: 10px;
+    margin: 0;
+    resize: both;
+    overflow: auto;
+    border: none;
+  }
+
+  .description.editing {
+    border: 1px solid black;
+  }
+
+.save-button {
+    margin-left: 4px;
+    margin-top: 0.5rem;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.save-button-subject {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.dropdown{
+  font-size: .875rem;
+  background: #fff;
+  border: 1px solid #d8dee9 !important;
+  border-radius: 4px;
+  box-shadow: 4px 4px 8px rgba(46,52,64,.1);
+  color: #008aa8;
+  padding: 0.5rem;
+  top: 20px;
+  width: 200px; 
+}
+.dropdown:hover {
+  background-color: #ddd;
+}
+
+.dropdown:active {
+  background-color: #ccc;
+}
+
+.attachments {
+    margin: 20px 0;
+  }
+  
+  .attachment-header {
+    display: flex;
+    margin-bottom: 10px;
+    background-color: #eceff4;
+    font-size: 1rem;
+    color: #4c566a;
+    padding: 0 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .attachment-count {
+    color: #888;
+    font-weight: normal;
+  }
+  
+  .attachment-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .attachment-label {
+    background-color: #83eede;
+    color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .attachment-label:hover {
+    background-color: #41726b;
+  }
+  
+  .attachment-input {
+    display: none;
+  }
+  
+  .attachment-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .attachment-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .attachment-item-name {
+    margin-right: 10px;
+  }
+  
+  .attachment-item-remove {
+    color: #888;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .editableText{
+    padding: 5px 2px 5px 2px;
+  }
+  
+  .attachment-item-remove:hover {
+    color: #ff5c5c;
+  }
+
+  .comment-section {
+    margin-top: 40px;
+  }
+  
+  .comment-section h2 {
+    margin-bottom: 10px;
+    background-color: #eceff4;
+    font-size: 1rem;
+    color: #4c566a;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .comment-section form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .comment-section form .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .comment-section form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .comment-section form textarea {
+    height: 50px;
+    width: 100%;
+    line-height: 40px;
+  }
+  
+  .comment-section form button {
+    align-self: flex-end;
+  }
+  
+  .comment {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .comment .avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .comment .content {
+    flex-grow: 1;
+  }
+  
+  .comment .content h4 {
+    margin: 0;
+  }
+  
+  .comment .content p {
+    margin: 5px 0 0 0;
+  }
+  
+  .comment .metadata {
+    font-size: 14px;
+    color: #999;
+    text-align: right;
+  }
+
+  .custom-select {
+    height: 40px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.sidebar {
+  margin-left: 20px;
+  width: 400px;
+}
+  
+
+.dropdown option {
+    background: #fff !important;
+    color: #008aa8;
+    height: 20px;
+}
+.dropdown option.dropdown-option:focus {
+  background-color: #333 !important;
+  color: white !important;
+}
+
+.custom-params {
+  margin-top: 30px;
+}
+
+.dropdown-cont {
+  display: flex;
+  padding-top: 3px;
+  align-items: center;
+  margin: 20px auto;
+  background-color: #f9f9fb;
+  justify-content: space-between;
+  width: 70%;
+}
+
+#atributos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#dropdown2 {
+    border-radius: 3px;
+    background: #f9f9fb;
+    color: #000;
+    cursor: pointer;
+    height: 100%;
+    outline: none;
+    padding: 0 0 0 20px;
+    width: 50%;
+    border: none;
+    min-width: fit-content;
+}
+
+#dropdown2 option {
+    background: #fff;
+    min-width: fit-content;
+    color: #008aa8;
+    height: 20px;
+}
+
+.label {
+    color: #70728f;
+    font-size: 10px;
+}
+.issue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  min-width: 80%;
+  
+}
+
+.elemento:hover {
+  background-color: #eee;
+}
+
+.bola {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  align-content: end;
+} 
+
+
+  li {
+    list-style: none;
+  }
+
+  .comment-wrapper {
+    align-items: flex-start;
+    border-bottom: 1px solid #e2e3e9;
+    display: flex;
+    padding: 2rem 0;
+  }
+
+  .comment-img{
+    flex-shrink: 0;
+    margin-right: 1.5rem;
+    width: 60px;
+  }
+
+  .comment-info {
+    width: 100%;
+  }
+
+  .comment-data {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .comment-creator {
+    color: #008aa8;
+    margin-right: 0.5rem;
+  }
+
+  .comment-date {
+    font-size: .875rem;
+    color: #70728f;
+  }
+  .boton-papelera {
+    font-size: .875rem;
+    align-items: center;
+    background-color: #83eede;
+    border: 0;
+    border-radius: 4px;
+    color: #2e3440;
+    display: inline-flex;
+    justify-content: center;
+    line-height: initial;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0.5rem 1rem; 
+    cursor: pointer;
+    float: right;
+  }
+  .boton-papelera:hover{
+    background-color: #41726b;
+  }
+  
+  .boton-papelera i {
+    margin-right: auto;
+  }
+/* Estilos para tipos de  Issue */
+.bug {
+    background-color: red;
+  }
+  
+  .question {
+    background-color: rgb(6, 42, 247);
+  }
+  
+  .mejora {
+    background-color: green;
+  }
+  
+  /* Estilo para pending */
+  .wishlist {
+    background-color: grey;
+  }
+  
+  /* Estilos para gravedad */
+  .minor {
+    background-color: blue;
+  }
+  
+  .normal {
+    background-color: green;
+  }
+  
+  .important {
+    background-color: orange;
+  }
+  
+  .critical {
+    background-color: red;
+  }
+  
+  /* Estilos para prioridad */
+  .low {
+    background-color: green;
+  }
+  
+  .normal {
+    background-color: orange;
+  }
+  
+  .high {
+    background-color: red;
+  }
+
+.assign {
+  border-bottom: 1px solid #a9aabc;
+  border-top: 1px solid #a9aabc;
+  padding: 1.2rem 0;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.label-ticket {
+  font-size: .7rem;
+    font-family: Ubuntu-Medium,Arial,Helvetica,sans-serif;
+    color: #2e3440;
+    display: block;
+    margin-block-end: 0.25rem;
+    text-transform: uppercase;
+}
+
+.assign-list {
+  position: relative;
+}
+
+.ticket-user-actions {
+  display: flex;
+  margin: 0.5rem -0.25rem 0;
+}
+
+
+.ticket-actions-link {
+  background: #fff;
+    color: #5a5b72;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    font-size: .9rem;
+    justify-content: center;
+    line-height: 2rem;
+    margin: 0 0.25rem;
+    text-align: center;
+}
+
+.icon-add {
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a { 
+  text-decoration: none;
+}
+
+.ticket-user-list {
+  margin: 0.25rem 0 0;
+}
+
+.assignUser {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0.25rem 0;
+  width: 100%;
+}
+
+.img-avatar {
+  flex-basis: 3rem;
+    margin-right: 0.25rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    width: 60px;
+}
+
+.img-attachment {
+  flex-basis: 6rem;
+    margin-right: 1rem;
+    max-height: 6rem;
+    max-width: 6rem;
+    width: 150px;
+}
+
+.avatar-img {
+  width: 100%;
+}
+
+.user-list-name {
+  flex-grow: 1;
+  margin-left: 0.5rem;
+}
+
+.watchers {
+  border-bottom: 1px solid #a9aabc;
+  padding: 1.2rem 0;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.label-ticket {
+  font-size: .7rem;
+    font-family: Ubuntu-Medium,Arial,Helvetica,sans-serif;
+    color: #2e3440;
+    display: block;
+    margin-block-end: 0.25rem;
+    text-transform: uppercase;
+}
+
+.watchers-list {
+  position: relative;
+}
+
+.ticket-user-actions {
+  display: flex;
+  margin: 0.5rem -0.25rem 0;
+}
+
+
+.ticket-actions-link {
+  background: #fff;
+    color: #5a5b72;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    font-size: .9rem;
+    justify-content: center;
+    line-height: 2rem;
+    margin: 0 0.25rem;
+    text-align: center;
+}
+
+.icon-nowatch {
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.ticket-watchers-list {
+  margin: 0.25rem 0 0;
+}
+
+.watchUser {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0.25rem 0;
+  width: 100%;
+}
+
+.img-avatar {
+  flex-basis: 3rem;
+    margin-right: 0.25rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    width: 60px;
+}
+
+.avatar-img {
+  width: 100%;
+}
+
+.watcher-list-name {
+  flex-grow: 1;
+  margin-left: 0.5rem;
+}
+.botonLock{
+
+  border: 0;
+  border-radius: 4px;
+  color: #2e3440;
+  display: inline-flex;
+  justify-content: center;
+  line-height: initial;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.5rem 1rem; 
+  cursor: pointer;
+  float: right;
+  margin-top: 2em;
+}
+
+
+.date-form {
+  display: none; /* El formulario se oculta inicialmente */
+}
+
+
+
+  
+
+
+
+.botoncomments {
+  background-color: transparent; /* Establece el fondo como transparente */
+  border: none; /* Elimina los bordes */
+  cursor: pointer; /* Cambia el cursor al puntero al pasar por encima */
+  /* Otros estilos opcionales */
+  padding: 10px 20px; /* Agrega relleno (padding) para dar espacio al contenido del botón */
+  font-family: Ubuntu, Arial, Helvetica, sans-serif;
+}
+/* Estilo para el contenedor timeline */
+.activitieslist {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo para las filas timeline-item */
+.activityIssue {
+  margin-top: 10px; /* Espacio entre filas */
+  padding: 10px; /* Espaciado interno */
+  background-color: #dfe0ed; /* Color de fondo */
+  border-radius: 5px; /* Borde redondeado */
+  border-color: #2e3440;
+}
+
+/* Estilo para el enlace en las filas timeline-item */
+.activityIssue {
+  color: #0066cc; /* Color del enlace */
+  text-decoration: none; /* Sin subrayado */
+}
+
+/* Estilo para el número de issue en el enlace */
+.activityIssue a::before {
+  content: "#"; /* Añadir el símbolo "#" antes del número de issue */
+  margin-right: 5px; /* Espacio entre "#" y el número de issue */
+}
+
+/* Estilo para el título del issue en el enlace */
+.activityIssue a::after {
+  content: ""; /* No hay contenido después del título del issue */
+}
+.btn {
+  display: inline-block;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #0056b3;
+}
+.btn-icon {
+  margin-right: 5px;
+}
+/* Estilos para el formulario */
+.date-form {
+  display: none;
+  margin-top: 1em; /* Añade un margen superior */
+}
+
+/* Estilos para la etiqueta del formulario */
+.date-form label {
+  display: block;
+  margin-bottom: 0.5em; /* Añade un margen inferior */
+  font-weight: bold; /* Añade negrita */
+}
+
+/* Estilos para el campo de entrada de fecha */
+.date-form input[type="date"] {
+  padding: 0.5em; /* Añade espacio interno */
+}
+
+/* Estilos para el botón de enviar del formulario */
+.date-form input[type="submit"] {
+  padding: 0.5em 1em; /* Añade espacio interno horizontal */
+  background-color: #007bff; /* Cambia el color de fondo */
+  color: #fff; /* Cambia el color del texto */
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilos para el ícono de reloj dentro del botón */
+.botonLock i {
+  margin-right: 0.5em; /* Añade un margen derecho */
+}
+
+.attachmentS{
+  background-color: #eceff4;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  margin-top: 1rem;
+}
+.removeAttachmentBtn{
+  background-color: transparent;
+  border: 0;
+
+}
