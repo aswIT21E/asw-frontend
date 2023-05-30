@@ -49,6 +49,7 @@ const Home: React.FC = () => {
     const fetchIssuesData = async () => {
       console.log('filterValue', filterValue);
       const fetchedIssues = await fetchIssues();
+      console.log(fetchedIssues);
       if (searchValue !== '') filterIssues(fetchedIssues);
       else if (filterValue !== '' && filter)  filterIssuesFilter(fetchedIssues)
       else setIssues(fetchedIssues);
