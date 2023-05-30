@@ -230,7 +230,7 @@ body {
 }
 
 
-.option.wishlist {
+.option.pending {
   border-left: 4px solid grey;
 }
 
@@ -243,6 +243,9 @@ body {
   border-left: 4px solid green;
 }
 
+.option.normal2 {
+  border-left: 4px solid orange;
+}
 .option.important {
   border-left: 4px solid orange;
 }
@@ -254,10 +257,6 @@ body {
 .option.low {
   border-left: 4px solid green;
 }
-
-.option.normal {
-  border-left: 4px solid orange;
-} 
 
 .option.high {
   border-left: 4px solid red;

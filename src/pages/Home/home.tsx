@@ -12,7 +12,8 @@ const Home: React.FC = () => {
   const [issues, setIssues] = useState<IIssue[]>([]);
   const [searchValue, setSearchValue] = useState<string>('');
   const [filter, setFilter] = useState<boolean>(false);
-  const [priority, setPriority] = useState<string>('');
+  const [filterValue, setFilterValue] = useState<string>('');
+  const [column, setColumn] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionClick = (option) => {
@@ -30,35 +31,46 @@ const Home: React.FC = () => {
   useEffect(() => {
 
     const filterIssues = (fetchedIssues: IIssue[]) => {
-      console.log('jola', fetchedIssues);
       const filteredIssues = fetchedIssues.issues.filter((issue) =>
         issue.subject.includes(searchValue) || issue.description.includes(searchValue)
       );
       const issueObject = {issues: filteredIssues};
       setIssues(issueObject);
-      console.log(typeof filteredIssues);
     };
 
+    const filterIssuesFilter = (fetchedIssues: IIssue[]) => {
+      const filteredIssues = fetchedIssues.issues.filter((issue) =>
+        issue[column] ===  filterValue
+      );
+      const issueObject = {issues: filteredIssues};
+      setIssues(issueObject);
+    }
+
     const fetchIssuesData = async () => {
+      console.log('filterValue', filterValue);
       const fetchedIssues = await fetchIssues();
       if (searchValue !== '') filterIssues(fetchedIssues);
+      else if (filterValue !== '' && filter)  filterIssuesFilter(fetchedIssues)
       else setIssues(fetchedIssues);
       console.log('holaaa', typeof fetchedIssues)
     };
-
     fetchIssuesData();
-  }, [searchValue]);
+  }, [searchValue, filterValue, column]);
 
   function handleInputChange(e: string): void {
     setSearchValue(e);
   }
 
-  function handleFilter(propierty: string){
-    
+  function handleFilter(propierty: string, column: string){
+    setFilterValue(propierty);
+    setColumn(column);
   }
 
   function handleFilters(){
-    setFilter(!filter)
+    console.log(filter, column, filterValue);
+    !filter ? setFilter(true) : setFilter(false);
+    setColumn('')
+    setFilterValue('');
   }
 
   return (
@@ -70,16 +82,18 @@ const Home: React.FC = () => {
         <div className={styles['search-box']}>
         <div className={styles['search-button']} type="submit" onClick={handleFilters}>
                 <FontAwesomeIcon icon={faFilter} className={styles['bulk-icon']} />
-                   {!filter ? "Filtrar": "Esconder filtros"}
+                   {!filter ? "Filtrar": "Deshacer"}
         </div>
           <form
             id="hacerSearch"
             className={styles['search-form']}
+            onSubmit={(e) => {
+              e.preventDefault(); // Evita que la página se recargue al enviar el formulario
+            }}
           >
             <input
               className={styles['search-input']}
               type="text"
-              id="inputSearchbar"
               placeholder="Subject or reference"
               onChange={(e) => handleInputChange(e.target.value)}
             />
@@ -115,9 +129,9 @@ const Home: React.FC = () => {
              {selectedOption === 'Type' && (
               <div className={styles.subOptions}>
                 <ul>
-                <li className={`${styles.option} ${styles.bug}`} onClick={handleFilter('bug')}>Bug</li>
-                <li className={`${styles.option} ${styles.question}`}>Question</li>
-                <li className={`${styles.option} ${styles.enhancement}`}>Enhancement</li>
+                <li className={`${styles.option} ${styles.bug}`} onClick={() => handleFilter('bug', 'type')}>Bug</li>
+                <li className={`${styles.option} ${styles.question}`} onClick={() => handleFilter('question', 'type')}>Question</li>
+                <li className={`${styles.option} ${styles.enhancement}`} onClick={() => handleFilter('enhancement', 'type')}>Enhancement</li>
                 </ul>
               </div>
               )}
@@ -130,11 +144,11 @@ const Home: React.FC = () => {
              {selectedOption === 'Severity' && (
               <div className={styles.subOptions}>
                 <ul>
-                  <li className={`${styles.option} ${styles.wishlist}`}>Wishlist</li>
-                  <li className={`${styles.option} ${styles.minor}`}>Minor</li>
-                  <li className={`${styles.option} ${styles.normal}`}>Normal</li>
-                  <li className={`${styles.option} ${styles.important}`}>Important</li>
-                  <li className={`${styles.option} ${styles.critical}`}>Critical</li>
+                  <li className={`${styles.option} ${styles.pending}`} onClick={() => handleFilter('pending', 'severity', )}>Pending</li>
+                  <li className={`${styles.option} ${styles.minor}`} onClick={() => handleFilter('minor', 'severity')}>Minor</li>
+                  <li className={`${styles.option} ${styles.normal}`} onClick={() => handleFilter('normal', 'severity')}>Normal</li>
+                  <li className={`${styles.option} ${styles.important}`} onClick={() => handleFilter('important', 'severity')}>Important</li>
+                  <li className={`${styles.option} ${styles.critical}`} onClick={() => handleFilter('critical', 'severity')}>Critical</li>
                 </ul>
               </div>
              )}
@@ -147,9 +161,9 @@ const Home: React.FC = () => {
              {selectedOption === 'Priority' && (
               <div className={styles.subOptions}>
                 <ul>
-                  <li className={`${styles.option} ${styles.wishlist}`}>Low</li>
-                  <li className={`${styles.option} ${styles.minor}`}>Normal</li>
-                  <li className={`${styles.option} ${styles.normal}`}>High</li>
+                  <li className={`${styles.option} ${styles.low}`} onClick={() => handleFilter('low', 'priority')}>Low</li>
+                  <li className={`${styles.option} ${styles.normal2}`} onClick={() => handleFilter('normal', 'severity')}>Normal</li>
+                  <li className={`${styles.option} ${styles.high}`} onClick={() => handleFilter('high', 'severity')}>High</li>
                 </ul>
               </div>
              )}
