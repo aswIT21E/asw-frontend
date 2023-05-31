@@ -5,6 +5,7 @@ import styles from './index.module.css';
 import App from './App';
 import Home from './pages/Home/home';
 import { AddIssue } from './pages/CRUD/crud';
+import { BulkIssue } from './pages/CRUD/bulk';
 import { Login } from './pages/Login/login';
 import { login } from './services/loginService';
 
@@ -27,10 +28,11 @@ const Index = () => {
           />
           <Route path="/login" element={<Login login={(username, password) => login(username, password, setAuthenticated)} />} />
           <Route path="/issues/newIssue" element={<AddIssue />} />
+          <Route path="/issues/bulk" element={<BulkIssue />} />
         </Routes>
       </App>
     </React.StrictMode>
   );
 };
-
+document.getElementById('root')
 ReactDOM.render(<Index />, document.getElementById('root'));
