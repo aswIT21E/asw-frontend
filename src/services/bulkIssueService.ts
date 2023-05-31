@@ -8,7 +8,7 @@ export const bulkIssue = async (data: any, navigate: (path: string) => void) => 
       severity: 'minor',
       priority: 'low',
     }));
-    console.log(bulkIssues)
+
     try {
         await fetch('http://api.asw-fib.net/issues/bulk', {
         method: 'POST',
