@@ -1,0 +1,204 @@
+* {
+    box-sizing: border-box;
+    font-family: Ubuntu, Arial, Helvetica, sans-serif;
+}
+
+.container{
+  max-width: 80%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+}
+
+.detail-header{
+  margin: 0 0 0.5rem;
+}
+
+
+.titleIssue{
+  color: #2e3440;
+  flex-grow: 1;
+  // flex-direction: row;
+  word-break: break-word;
+}
+
+.issue-ball {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+
+.infoContainer{
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 2rem;
+  flex-direction: column;
+}
+
+.createdByContainer{
+  justify-content: flex-end;
+}
+.descriptionIssue{
+  margin: 3px;
+}
+.subjectIssue{
+  color: black;
+  flex-grow: 1;
+  word-break: break-word;
+  font-size: 25px;
+  font-weight: 10px;
+  font-weight: bold;
+  color: #008aa8;
+}
+.createdBy{
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline
+}
+
+a{
+  color: #008aa8;
+  text-decoration: none
+}
+
+.issuePage{
+  width: 75%;
+  display: flex;
+  margin: 0;
+  padding-top: 5rem;
+  flex-direction: row;
+}
+.subOptions{
+  width: 100%;
+}
+
+.subOptions ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.subOptions li {
+  margin-bottom: 5px;
+}
+
+.dropdownText {
+  /* Estilos para .dropdownText */
+  font-size: 16px;
+  color: #333;
+}
+
+.dropdownIcon {
+  /* Estilos para .dropdownIcon */
+  margin-left: 5px;
+}
+
+.dropdownMenu {
+  /* Estilos para .dropdownMenu */
+  list-style: none;
+  padding: 0;
+  
+}
+.dropdownContainer{
+
+  background-color: #f9f9fb !important;
+  border-radius: 3px;
+}
+.option{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px !important;
+}
+
+.options ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.options li {
+  margin-bottom: 10px;
+}
+.buttonOps{
+    justify-content: flex-start;
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: lightgray;
+    border: 0;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 150px;
+}
+
+li{
+  margin-bottom: 10px !important;
+  padding: 5px;
+  width: 150px;
+  cursor: pointer;
+  &:hover{
+    background-color: #f9f9fb;
+  }
+}
+.bug {
+  background-color: red;
+}
+
+.question {
+  background-color: rgb(6, 42, 247);
+}
+
+.normal {
+  background-color: green;
+}
+
+/* Estilo para pending */
+.wishlist {
+  background-color: grey;
+}
+
+/* Estilos para gravedad */
+.minor {
+  background-color: blue;
+}
+
+.pending {
+  background-color: grey;
+}
+
+.important {
+  background-color: orange;
+}
+
+.critical {
+  background-color: red;
+}
+
+/* Estilos para prioridad */
+.low {
+  background-color: green;
+}
+
+.normal2 {
+  background-color: orange;
+}
+
+.high {
+  background-color: red;
+}
+.issueBall{
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+

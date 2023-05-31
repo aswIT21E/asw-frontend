@@ -24,9 +24,6 @@ const Home: React.FC = () => {
   const handleProfileClick = () => {
     console.log('Redirigiendo al perfil del usuario');
   };
-  useEffect(() => {
-    
-  })
   console.log('a');
   useEffect(() => {
 
@@ -47,7 +44,6 @@ const Home: React.FC = () => {
     }
 
     const fetchIssuesData = async () => {
-      console.log('filterValue', filterValue);
       const fetchedIssues = await fetchIssues();
       console.log(fetchedIssues);
       if (searchValue !== '') filterIssues(fetchedIssues);
