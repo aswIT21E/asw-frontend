@@ -1,7 +1,7 @@
 import type { IUser } from '~/entities';
 
 export interface IIssue {
-  id?: string;
+  _id?: string;
   numberIssue: number;
   subject: string;
   description: string;
