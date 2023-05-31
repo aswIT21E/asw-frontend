@@ -4,6 +4,8 @@ import { IIssue } from '../../entities';
 import { fetchIssues } from '../../services/issueService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
 
 export type issueTableProps = {
   issuesProps: IIssue[];
@@ -58,7 +60,7 @@ const Table = ({ issuesProps }: issueTableProps) => {
   
 
   const sortedIssues = orderField ? sortIssues() : Object.values(issues)[0];
-
+  console.log(sortedIssues);
   function handleProfileClick(id: string) {
     console.log(id);
   }
@@ -157,7 +159,7 @@ const Table = ({ issuesProps }: issueTableProps) => {
                       title={issue.priority}
                     ></span>
                   </td>
-                  <td>{issue.subject}</td>
+                    <td><Link to={`/issue/${issue._id}`}>{issue.subject}</Link></td>
                   <td>{issue.status}</td>
                   <td>{issue.assignedTo}</td>
                 </tr>
