@@ -9,8 +9,9 @@ import { modifyIssue} from "../../services/modifyIssueService";
 import { lockIssue } from "../../services/lockService";
 import { unlockIssue} from "../../services/unlockService";
 import { updateDeadline } from "../../services/deadlineService";
-
+import { addAttachment } from "../../services/addAttachementService";
 import { deleteIssue } from "../../services/deleteIssueService";
+
 import { faCheck, faEdit, faLock, faTrashCan, faUnlock, faTrashAlt, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 
 import AssignComponent from "../AssignComponent/assignComponent"
@@ -132,6 +133,14 @@ const IssuePage = () => {
     setSelectedDate(null);
   }
 
+  async function handleFileChange(event) {
+    const file = event.target.files[0];
+    console.log(file)
+    await addAttachment(issue?.id, file);
+    console.log("Archivo seleccionado:", file);
+  }
+  
+
   
   let estilosDeadline: string;
 
@@ -222,6 +231,10 @@ const IssuePage = () => {
               ) : null}
 
           {/* <span className={styles.descriptionIssue}>{issue?.description}</span> */}
+          <form>
+              <input type="file" onChange={handleFileChange} />
+              <button type="submit">Enviar</button>
+          </form>
           <br></br>
           <div id="Comentarios">
           <h2 className="comment-h2">
