@@ -1,8 +1,9 @@
+import { token } from ".";
 export const unlockIssue = async (id: string) => {
     try {
       const response = await fetch(`http://api.asw-fib.net/issues/${id}/unlock-issue`, {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVsc2EiLCJpYXQiOjE2ODUzNTMyNDd9.sOGIHXk-CTXi3t9Z5mHCEKXBo-_kOzljhmTgLqPOj0E',
+          Authorization: 'Bearer ' + token,
           'Content-Type': "application/x-www-form-urlencoded"
         },
         method: 'PUT',
