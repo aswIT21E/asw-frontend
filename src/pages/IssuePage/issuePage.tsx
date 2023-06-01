@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./issuePage.module.scss";
-import { faEdit, faTrashCan , faCheck} from '@fortawesome/free-solid-svg-icons';
 import { IIssue } from "../../entities";
 import { getIssue } from "../../services/getIssueService";
 import { createComment } from '../../services/createCommentService';
@@ -8,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import CommentTable from "../CommentTable/commentTable";
 import { modifyIssue } from "../../services/modifyIssueService";
 import { deleteIssue } from "../../services/deleteIssueService";
+import { faCheck, faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -195,13 +196,6 @@ const IssuePage = () => {
             {issue?.type && issue?.type.toUpperCase()}              
             </span>
         </button>
-        <div className={styles.dropdown}>
-        <ul className={styles.dropdownMenu}>
-            <li className={`${styles.option} ${styles.bug}`}>Bug</li>
-            <li className={`${styles.option} ${styles.question}`}>Question</li>
-            <li className={`${styles.option} ${styles.enhancement}`}>Enhancement</li>
-        </ul>
-        </div>
         
         {valueSelection === 'type' && 
             (<div className={styles.dropdown}>
