@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './issueTable.module.scss';
 import { IIssue } from '../../entities';
-import { fetchIssues } from '../../services/issueService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
