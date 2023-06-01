@@ -6,6 +6,10 @@
 body {
     min-width: 1000px;
 }
+.editButton{
+  padding: 5px 2px 5px 2px;
+}
+
 .home-container {
     display: flex;
     flex-direction: column;
@@ -227,8 +231,8 @@ body {
   border-left: 4px solid blue;
 }
 
-.option.enhancement {
-  border-left: 4px solid green;
+.option.whishlist {
+  border-left: 4px solid gray;
 }
 
 
