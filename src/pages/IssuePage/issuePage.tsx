@@ -5,9 +5,12 @@ import { getIssue } from "../../services/getIssueService";
 import { createComment } from '../../services/createCommentService';
 import { useNavigate } from "react-router-dom";
 import CommentTable from "../CommentTable/commentTable";
-import { modifyIssue } from "../../services/modifyIssueService";
+import { modifyIssue} from "../../services/modifyIssueService";
+import { lockIssue } from "../../services/lockService";
+import { unlockIssue} from "../../services/unlockService";
+
 import { deleteIssue } from "../../services/deleteIssueService";
-import { faCheck, faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEdit, faLock, faTrashCan, faUnlock } from '@fortawesome/free-solid-svg-icons';
 
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,10 +23,25 @@ const IssuePage = () => {
   const [valueSelection, setValueSelection] = useState<string>('');
   const [editionMode, setEditionMode] = useState<boolean>(false);
   const [editionDescriptionMode, setDescriptionEditionMode] = useState<boolean>(false);
-
   const [subject, setSubject] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  const [showLockReason, setShowLockReason] = useState(false);
+  const [lockReason, setLockReason] = useState('');
+  const [issueLocked, setIssueLocked]= useState(issue?.locked)
+  async function  handleLockIssue() {
+    await setShowLockReason(true);
+  }
 
+  async function handleLockConfirmation() {
+    await lockIssue(issue?.id,  lockReason);
+    setShowLockReason(false);
+    setLockReason('');
+    setIssueLocked(true)
+  }
+ async function handleUnlockIssue(): void {
+    await unlockIssue(issue?.id);
+    setIssueLocked(false)
+  }
 
   useEffect(() => {
     const fetchDataIssue = async () => {
@@ -34,7 +52,7 @@ const IssuePage = () => {
       setIssue(fetchedIssues);
     };
     fetchDataIssue();
-  }, [finalcomment, valueSelection]);
+  }, [finalcomment, valueSelection, issueLocked]);
 
 
   const mostrarAcividades = () => {
@@ -96,6 +114,7 @@ const IssuePage = () => {
     setValueSelection('description');
   }
 
+  
 
   return (
     <div className={styles.issuePage}>
@@ -126,6 +145,14 @@ const IssuePage = () => {
               <a href="/">{`Created by ${issue?.creator.name}`}</a>
             </div>
           </div>
+          {issue?.locked ? (
+            <div>
+              <br></br>
+              
+              <span className={styles.lockText}> LOCKED: {issue.reasonLock}    </span>
+            </div>
+          ) : null}
+
           <br></br>
           {!editionDescriptionMode && (<span className={styles.descriptionIssue}>{issue?.description}</span>)}
           {!editionDescriptionMode && (<span className={styles.editContainer} >
@@ -328,6 +355,31 @@ const IssuePage = () => {
             </div>
             )
         }
+        {issue?.locked ? (
+          <button className={styles.unlockButton} onClick={() => handleUnlockIssue()}>
+            <FontAwesomeIcon icon={faLock} className={styles.editButton} />
+            <span className={styles.trashText}>Locked</span>
+          </button>
+        ) : (
+          <>
+          <button className={styles.lockButton} onClick={handleLockIssue}>
+            <FontAwesomeIcon icon={faUnlock} className={styles.editButton} />
+            <span className={styles.trashText}>Unlocked</span>
+          </button>
+    
+          {showLockReason && (
+            <>
+              <input
+                type="text"
+                value={lockReason}
+                onChange={(e) => setLockReason(e.target.value)}
+              />
+              <button className={styles.ConfirmLock} onClick={handleLockConfirmation}>Confirm Lock</button>
+            </>
+          )}
+        </>
+        )}
+
         <button className={styles.trashButton} onClick={() => handleDeleteIssue()}>
             <FontAwesomeIcon icon={faTrashCan} className={styles.editButton} />
             <Link to='/' className={styles.link}>
@@ -336,6 +388,7 @@ const IssuePage = () => {
                 </span>
             </Link>
         </button>
+        
       </div>
       
     </div>

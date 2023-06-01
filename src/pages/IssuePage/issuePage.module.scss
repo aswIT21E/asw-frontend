@@ -159,17 +159,18 @@ text-decoration: none;
 color: inherit;
 }
 .trashButton{
-  justify-content: center;
+  justify-content:center ;
   display: flex;
   padding: 10px;
   width: 100%;
   text-align: center;
-  background-color: #83eede;
+  background-color:#83eede;
   border: 0;
   align-items: center;
   margin-bottom: 10px;
   width: 150px;
   border-radius: 1rem;
+  margin-top: 30em;
 }
 .trashText {
 padding-left: 1rem;
@@ -243,4 +244,50 @@ background-color: red;
   height: 20px;
   border-radius: 50%;
   margin-right: 5px;
+}
+.lockButton{
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: #8386ee;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+  border-radius: 1rem;
+}
+.ConfirmLock{justify-content: center;
+  margin-top: 1em;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: #7bd47a;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+  border-radius: 1rem;}
+.unlockButton{
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: #ee8396;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+  border-radius: 1rem;
+}
+.lockText {
+  font-weight: bold;
+  color: red;
+  background-color: #ffffff;
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
