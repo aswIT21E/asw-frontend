@@ -10,8 +10,9 @@ import { lockIssue } from "../../services/lockService";
 import { unlockIssue} from "../../services/unlockService";
 
 import { deleteIssue } from "../../services/deleteIssueService";
-import { faCheck, faEdit, faLock, faTrashCan, faUnlock } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEdit, faLock, faTrashCan, faUnlock, faTrashAlt, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 
+import AssignComponent from "../AssignComponent/assignComponent"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -22,6 +23,10 @@ const IssuePage = () => {
   const [finalcomment, setFinalComment] = useState("");
   const [valueSelection, setValueSelection] = useState<string>('');
   const [editionMode, setEditionMode] = useState<boolean>(false);
+  const [viewAssigned, setViewAssigned] = useState<boolean>(false);
+  const [viewWatchers, setViewWatchers] = useState<boolean>(false);
+
+
   const [editionDescriptionMode, setDescriptionEditionMode] = useState<boolean>(false);
   const [subject, setSubject] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -62,7 +67,7 @@ const IssuePage = () => {
   const mostrarComentarios = () => {
     // Lógica para mostrar comentarios
   };
-  console.log(issue);
+  console.log(issue?.watchers);
   
   const navigate = useNavigate();
 
@@ -78,7 +83,7 @@ const IssuePage = () => {
     setFinalComment(comment)
     setComment('')
   };
-
+  console.log(issue);
   const handleSelection = (value: string) => {
     setValueSelection(valueSelection === value ? '' : value);
   }
@@ -193,6 +198,8 @@ const IssuePage = () => {
                   rows={7}
                   placeholder="Por favor, añade un texto descriptivo que ayude a otros a entender mejor esta petición"
                   value={comment}
+                  width={"663px"}
+                  height={"46px"}
                   onChange={(event) => setComment(event.target.value)}
                   data-required="true"
                 />
@@ -207,11 +214,7 @@ const IssuePage = () => {
         </div>
         
         <div className={styles.infoContainer}>
-          
         </div>
-        
-        
-
       </div>
       <div className={styles.dropdownContainer}>
         <button className={styles.buttonOps} onClick={() => handleSelection('type')}>
@@ -379,6 +382,59 @@ const IssuePage = () => {
           )}
         </>
         )}
+        <section className={styles.assign}>
+        <div className={styles.labelTicket}>
+          <span>Asignado</span>
+        </div>
+        <div className={styles.assignList}>
+                {issue?.assignedTo && (
+                    <div className={styles.list}>
+                    <img src={issue?.assignedTo?.profilePicture} alt="profile assigned" className={styles.image} />
+                    <div className={styles.userListName}>{issue?.assignedTo.username}</div>
+                    </div>
+                )}
+                    <>
+                    <button onClick={() => setViewAssigned(true)} className={styles.addbutton}> + Add assigned</button>
+                    {viewAssigned && (<AssignComponent watchers={true}/>)}
+                   </> 
+          <div className={styles.ticketUserActions}>
+            <div className={styles.iconAdd}>
+             {/* <FontAwesomeIcon icon={faEyeSlash} /> */}
+            </div>
+            <div id="link1"></div>
+          </div>
+        </div>
+        
+      </section>
+
+      <section className={styles.assign}>
+        <div className={styles.labelTicket}>
+          <span>Watchers</span>
+        </div>
+        <div className={styles.assignList}>
+
+        {issue?.watchers?.map((user) => 
+                <div className={styles.assign}>
+                {issue?.watchers && (
+                    <div className={styles.list}>
+                    <img src={user.profilePicture} alt="profile assigned" className={styles.image} />
+                    <div className={styles.userListName}>{user.username}</div>
+                    </div>
+                )} 
+            <div className={styles.ticketUserActions}>
+            <div className={styles.iconAdd}>
+            {/* <FontAwesomeIcon icon={faEyeSlash} /> */}
+            </div>
+            <div id="link1"></div>
+          </div>
+        </div>
+        )}
+        </div>
+        <>
+          <button onClick={() => setViewWatchers(true)} className={styles.addbutton}> + Add watchers</button>
+          {viewWatchers && (<AssignComponent/>)}
+        </>     
+      </section>
 
         <button className={styles.trashButton} onClick={() => handleDeleteIssue()}>
             <FontAwesomeIcon icon={faTrashCan} className={styles.editButton} />
@@ -388,8 +444,11 @@ const IssuePage = () => {
                 </span>
             </Link>
         </button>
-        
+    
       </div>
+      
+      <div>
+    </div>
       
     </div>
   );

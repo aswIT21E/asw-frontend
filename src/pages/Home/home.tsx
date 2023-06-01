@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   const handleProfileClick = () => {
     console.log('Redirigiendo al perfil del usuario');
   };
-  console.log('a');
+  
   useEffect(() => {
 
     const filterIssues = (fetchedIssues: IIssue[]) => {
