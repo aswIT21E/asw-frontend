@@ -140,14 +140,19 @@ const IssuePage = () => {
            )}
           <br></br>
           <br style={{ padding: "10px" }}></br>
-          {issue?.locked ? (
-            <span className={styles.lockText}>ESTE ISSUE ESTÁ BLOQUEADO POR EL SIGUIENTE MOTIVO: {issue.reasonLock}</span>
-        ) : (null)}
           <div className={styles.createdByContainer}>
             <div className={styles.createdBy}>
               <a href="/">{`Created by ${issue?.creator.name}`}</a>
             </div>
           </div>
+          {issue?.locked ? (
+            <div>
+              <br></br>
+              
+              <span className={styles.lockText}> LOCKED: {issue.reasonLock}    </span>
+            </div>
+          ) : null}
+
           <br></br>
           {!editionDescriptionMode && (<span className={styles.descriptionIssue}>{issue?.description}</span>)}
           {!editionDescriptionMode && (<span className={styles.editContainer} >

@@ -164,7 +164,7 @@ color: inherit;
   padding: 10px;
   width: 100%;
   text-align: center;
-  background-color: #e43333;
+  background-color:#83eede;
   border: 0;
   align-items: center;
   margin-bottom: 10px;
@@ -264,7 +264,7 @@ background-color: red;
   padding: 10px;
   width: 100%;
   text-align: center;
-  background-color: #eed983;
+  background-color: #7bd47a;
   border: 0;
   align-items: center;
   margin-bottom: 10px;
@@ -283,7 +283,11 @@ background-color: red;
   width: 150px;
   border-radius: 1rem;
 }
-.lockText{
-background-color: #191717;
-color: #f9f9fb;
+.lockText {
+  font-weight: bold;
+  color: red;
+  background-color: #ffffff;
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
