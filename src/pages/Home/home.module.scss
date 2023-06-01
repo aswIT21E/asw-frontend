@@ -60,13 +60,13 @@ body {
 
   .search-filter {
     display: flex;
-    flex-wrap: wrap;
     justify-content:space-between;
     align-items: center;
     background-color: rgb(249, 255, 255);
     width: 100%;
     max-width: 900px;
     margin-top: 20px;
+    max-width: fit-content;
   }
   
   .search-box {
@@ -184,6 +184,7 @@ body {
     font-size: 14px;
     text-decoration: none;
     margin-left: 10px;
+    min-width: fit-content;
   }
   
   .bulk-button i {

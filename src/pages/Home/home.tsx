@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './home.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUser, faFilter, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faUser, faFilter, faCircleArrowRight, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import Table from '../IssueTable/issueTable';
 import { fetchIssues } from '../../services/issueService';
 import { IIssue } from '../../entities';
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   const handleProfileClick = () => {
     console.log('Redirigiendo al perfil del usuario');
   };
-  console.log('a');
+  
   useEffect(() => {
 
     const filterIssues = (fetchedIssues: IIssue[]) => {
@@ -96,18 +96,16 @@ const Home: React.FC = () => {
             />
           </form>
         </div>
-        <div className={styles['profile-button']}>
-          <button id="irPerfil" onClick={handleProfileClick} className={styles['profile']}>
-            <FontAwesomeIcon icon={faUser} className={styles['profile-icon']} />
-            <span>      Ir al perfil</span>
-          </button>
-        </div>
+          <Link to="/profile" className={styles['profile']}>
+            <span>Ir al perfil</span>
+          </Link>
+
 
         <Link to="/issues/newIssue" className={styles['new-issue-button']}>
           <span>+ New Issue</span>
         </Link>
         <Link to="/issues/bulk" className={styles['bulk-button']}>
-          <FontAwesomeIcon icon={faFilter} className={styles['bulk-icon']} />
+          <FontAwesomeIcon icon={faFileAlt} className={styles['bulk-icon']} />
         </Link>
       </div>
         <div className={styles['filter-container']}>
