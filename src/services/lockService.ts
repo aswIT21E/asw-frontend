@@ -1,12 +1,12 @@
 import { token } from ".";
-export const modifyIssue = async (id: string, parameter: string, newValue: string) => {
+
+export const lockIssue = async (id: string, reason: string) => {
   var urlencoded = new URLSearchParams();
-  urlencoded.append("parameter", parameter);
-  urlencoded.append("newValue", newValue);
+  urlencoded.append("reason", reason);
     try {
-      const response = await fetch(`http://api.asw-fib.net/issues/${id}/editIssue`, {
+      const response = await fetch(`http://api.asw-fib.net/issues/${id}/lock-issue`, {
         headers: {
-          Authorization: 'Bearer '+ token,
+          Authorization: 'Bearer ' + token,
           'Content-Type': "application/x-www-form-urlencoded"
         },
         method: 'PUT',

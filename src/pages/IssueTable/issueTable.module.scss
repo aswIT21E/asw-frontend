@@ -17,6 +17,11 @@
     td:first-child {
       text-align: LEFT;
     }
+    .table td:nth-child(4) {
+      text-align: left !important;
+      padding-left: 2rem;
+    }
+    
   }
   
   .issueList {
@@ -40,13 +45,13 @@
       justify-content: center;
     }
   
-    th:nth-child(-n + 3),
-    td:nth-child(-n + 3) {
+    th:nth-child(-n + 4),
+    td:nth-child(-n + 4) {
       text-align: left;
     }
   
-    th:nth-last-child(-n + 3),
-    td:nth-last-child(-n + 3) {
+    th:nth-last-child(-n + 4),
+    td:nth-last-child(-n + 4) {
       text-align: right;
     }
   
@@ -100,6 +105,11 @@
       }
     }
   }
+  .link{
+    text-decoration: none;
+    color: inherit;
+
+  }
 
   .bug {
     background-color: red;
@@ -117,6 +127,9 @@
   .wishlist {
     background-color: grey;
   }
+  .pending {
+    background-color: grey;
+  }
   
   /* Estilos para gravedad */
   .minor {
@@ -124,6 +137,9 @@
   }
   
   .normal {
+    background-color: orange;
+  }
+  .normal2 {
     background-color: green;
   }
   

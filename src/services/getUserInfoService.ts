@@ -1,6 +1,7 @@
+import { token } from ".";
+
 export const getUserInfo = async () => {
     try {
-        const token = localStorage.getItem('token');
         const user = await fetch('http://api.asw-fib.net/users/profile',{
             headers: {
                 Authorization: 'Bearer ' + token,

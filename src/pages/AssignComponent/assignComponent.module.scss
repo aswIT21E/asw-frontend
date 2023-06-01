@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    font-family: Ubuntu, Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .lightbox {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .cerrarEnlace {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+  }
+  .customSelect{
+    width: 350px;
+    height: 30px;
+  }
+  
+  .selectUserForm {
+    background-color: #65c3b4;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .userList {
+    margin-top: 20px;
+  }
+  
+  #select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #83eede;
+    border-radius: 4px;
+  }
+  
+  .userActions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .saveBtn {
+    background-color: #168791;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .saveBtn:hover {
+    background-color: #00a1b3;
+  }
+  

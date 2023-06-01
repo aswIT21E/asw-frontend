@@ -1,28 +1,276 @@
 * {
-    box-sizing: border-box;
-    font-family: Ubuntu, Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  font-family: Ubuntu, Arial, Helvetica, sans-serif;
 }
 
 .container{
-  max-width: 80%;
-  display: flex;
-  margin: 0 auto;
-  flex-direction: row;
+max-width: 80%;
+display: flex;
+margin: 0 auto;
+flex-direction: row;
 }
 
 .detail-header{
-  margin: 0 0 0.5rem;
+margin: 0 0 0.5rem;
+}
+.assignList{
+  margin: 0 auto;
 }
 
+.image{
+  width: 40px;
+  height: 40px;
+}
+
+.list {
+  list-style: none;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
 .titleIssue{
-  color: #2e3440;
-  flex-grow: 1;
-  // flex-direction: row;
-  word-break: break-word;
+color: #2e3440;
+flex-grow: 1;
+// flex-direction: row;
+word-break: break-word;
+min-width: 500px;
 }
 
 .issue-ball {
+display: flex;
+justify-content: center;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+margin-right: 5px;
+}
+
+
+.infoContainer{
+max-width: 100%;
+margin: 0 auto;
+padding-top: 2rem;
+flex-direction: column;
+}
+
+.createdByContainer{
+justify-content: flex-end;
+}
+.descriptionIssue{
+  margin: 3px;
+  height: 15em;
+  display: flex;
+}
+.subjectIssue{
+color: black;
+flex-grow: 1;
+word-break: break-word;
+font-size: 25px;
+font-weight: 10px;
+font-weight: bold;
+color: #008aa8;
+}
+.createdBy{
+font-size: 100%;
+font: inherit;
+vertical-align: baseline
+}
+
+a{
+color: #008aa8;
+text-decoration: none
+}
+
+.issuePage{
+width: 75%;
+display: flex;
+margin: 0;
+padding-top: 5rem;
+flex-direction: row;
+}
+.subOptions{
+width: 100%;
+}
+
+.subOptions ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+margin-top: 10px;
+}
+.acceptButton{
+padding-left: 1rem;
+}
+
+.subOptions li {
+margin-bottom: 5px;
+}
+
+.editContainer{
+padding-left: 10px;
+color: transparent;
+display: inline;
+&:hover{
+  color: gray;
+}
+}
+
+.editContainerNO{
+display: flex;
+color: gray;
+align-items: center;
+}
+.dropdownText {
+/* Estilos para .dropdownText */
+font-size: 16px;
+color: #333;
+}
+
+.dropdownIcon {
+/* Estilos para .dropdownIcon */
+margin-left: 5px;
+}
+
+.dropdownMenu {
+/* Estilos para .dropdownMenu */
+list-style: none;
+padding: 0;
+
+}
+.dropdownContainer{
+  display: flex;
+  flex-direction: column;
+border-radius: 3px;
+}
+.option{
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-radius: 5px !important;
+}
+
+.options ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+
+.options li {
+margin-bottom: 10px;
+}
+.buttonOps{
+  justify-content: flex-start;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: lightgray;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+}
+.link{
+text-decoration: none;
+color: inherit;
+}
+.addbutton{
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: #83eede;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 10px;
+}
+
+.trashButton{
+  justify-content:center ;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color:#83eede;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+  border-radius: 1rem;
+  margin-top: auto;
+}
+.trashText {
+padding-left: 1rem;
+}
+
+li{
+margin-bottom: 10px !important;
+padding: 5px;
+width: 150px;
+cursor: pointer;
+&:hover{
+  background-color: #f9f9fb;
+}
+}
+.bug {
+background-color: red;
+}
+
+.question {
+background-color: rgb(6, 42, 247);
+}
+
+.normal {
+background-color: green;
+}
+
+/* Estilo para pending */
+.wishlist {
+background-color: grey;
+}
+
+
+/* Estilos para gravedad */
+.minor {
+background-color: blue;
+}
+
+.pending {
+background-color: grey;
+}
+
+.important {
+background-color: orange;
+}
+.editTextarea{
+max-width: fit-content;
+height: fit-content;
+height: 30px;
+}
+
+.critical {
+background-color: red;
+}
+
+/* Estilos para prioridad */
+.low {
+background-color: green;
+}
+
+.normal2 {
+background-color: orange;
+}
+
+.high {
+background-color: red;
+}
+.issueBall{
   display: flex;
   justify-content: center;
   width: 20px;
@@ -30,175 +278,134 @@
   border-radius: 50%;
   margin-right: 5px;
 }
-
-
-.infoContainer{
-  max-width: 100%;
-  margin: 0 auto;
-  padding-top: 2rem;
-  flex-direction: column;
-}
-
-.createdByContainer{
-  justify-content: flex-end;
-}
-.descriptionIssue{
-  margin: 3px;
-}
-.subjectIssue{
-  color: black;
-  flex-grow: 1;
-  word-break: break-word;
-  font-size: 25px;
-  font-weight: 10px;
-  font-weight: bold;
-  color: #008aa8;
-}
-.createdBy{
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline
-}
-
-a{
-  color: #008aa8;
-  text-decoration: none
-}
-
-.issuePage{
-  width: 75%;
+.lockButton{
+  justify-content: center;
   display: flex;
-  margin: 0;
-  padding-top: 5rem;
-  flex-direction: row;
-}
-.subOptions{
+  padding: 10px;
   width: 100%;
-}
-
-.subOptions ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  margin-top: 10px;
-}
-
-.subOptions li {
-  margin-bottom: 5px;
-}
-
-.dropdownText {
-  /* Estilos para .dropdownText */
-  font-size: 16px;
-  color: #333;
-}
-
-.dropdownIcon {
-  /* Estilos para .dropdownIcon */
-  margin-left: 5px;
-}
-
-.dropdownMenu {
-  /* Estilos para .dropdownMenu */
-  list-style: none;
-  padding: 0;
-  
-}
-.dropdownContainer{
-
-  background-color: #f9f9fb !important;
-  border-radius: 3px;
-}
-.option{
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
+  background-color: #8386ee;
+  border: 0;
   align-items: center;
-  border-radius: 5px !important;
+  margin-bottom: 10px;
+  width: 150px;
+  border-radius: 1rem;
+}
+.ConfirmLock{justify-content: center;
+  margin-top: 1em;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: #7bd47a;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+  border-radius: 1rem;}
+.unlockButton{
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: #ee8396;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+  border-radius: 1rem;
+}
+.lockText {
+  font-weight: bold;
+  color: red;
+  background-color: #ffffff;
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.entregaTarde{
+  color:green;
 }
 
-.options ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.entregaMedioTarde{
+  color: orange;
 }
 
-.options li {
+.entregaManana{
+  color: red;
+}
+
+.label-ticket {
   margin-bottom: 10px;
 }
-.buttonOps{
-    justify-content: flex-start;
-    display: flex;
-    padding: 10px;
-    width: 100%;
-    text-align: center;
-    background-color: lightgray;
-    border: 0;
-    align-items: center;
-    margin-bottom: 10px;
-    width: 150px;
+.labelTicket{
+  margin: 0 auto;
+}
+.assign{
+  margin: 0 auto;
 }
 
-li{
-  margin-bottom: 10px !important;
-  padding: 5px;
+.comment {
+  list-style: none;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
+
+.assign {
+  margin-bottom: 20px;
   width: 150px;
-  cursor: pointer;
-  &:hover{
-    background-color: #f9f9fb;
-  }
-}
-.bug {
-  background-color: red;
+  display: grid;
+  /* margin: 0 auto; */
+  border: 0.5px gray solid;
 }
 
-.question {
-  background-color: rgb(6, 42, 247);
+.assign-list {
+  display: flex;
 }
 
-.normal {
-  background-color: green;
+.ticket-user-list {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
-/* Estilo para pending */
-.wishlist {
-  background-color: grey;
+.user-list-name {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin-right: 5px;
 }
 
-/* Estilos para gravedad */
-.minor {
-  background-color: blue;
+.ticket-user-actions {
+  display: flex;
+  align-items: center;
 }
 
-.pending {
-  background-color: grey;
+.plus-icon {
+  font-size: 20px;
+  margin-right: 5px;
 }
 
-.important {
-  background-color: orange;
+.watchers {
+  margin-bottom: 20px;
+  display: block;
 }
 
-.critical {
-  background-color: red;
+.watchers-list {
+  display: flex;
 }
 
-/* Estilos para prioridad */
-.low {
-  background-color: green;
+.ticket-watchers-list {
+  flex-grow: 1;
+  background-color: #ccc;
+  height: 30px;
+  margin-right: 10px;
 }
 
-.normal2 {
-  background-color: orange;
+.icon-nowatch {
+  margin-left: 10px;
+  font-size: 20px;
 }
-
-.high {
-  background-color: red;
-}
-.issueBall{
-    display: flex;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-

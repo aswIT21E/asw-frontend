@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './home.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUser, faFilter, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faUser, faFilter, faCircleArrowRight, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import Table from '../IssueTable/issueTable';
 import { fetchIssues } from '../../services/issueService';
 import { IIssue } from '../../entities';
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   const handleProfileClick = () => {
     console.log('Redirigiendo al perfil del usuario');
   };
-  console.log('a');
+  
   useEffect(() => {
 
     const filterIssues = (fetchedIssues: IIssue[]) => {
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
           <span>+ New Issue</span>
         </Link>
         <Link to="/issues/bulk" className={styles['bulk-button']}>
-          <FontAwesomeIcon icon={faFilter} className={styles['bulk-icon']} />
+          <FontAwesomeIcon icon={faFileAlt} className={styles['bulk-icon']} />
         </Link>
       </div>
         <div className={styles['filter-container']}>
@@ -126,7 +126,7 @@ const Home: React.FC = () => {
                 <ul>
                 <li className={`${styles.option} ${styles.bug}`} onClick={() => handleFilter('bug', 'type')}>Bug</li>
                 <li className={`${styles.option} ${styles.question}`} onClick={() => handleFilter('question', 'type')}>Question</li>
-                <li className={`${styles.option} ${styles.enhancement}`} onClick={() => handleFilter('enhancement', 'type')}>Enhancement</li>
+                <li className={`${styles.option} ${styles.whishlist}`} onClick={() => handleFilter('wishlist', 'type')}>Wishlist</li>
                 </ul>
               </div>
               )}
@@ -157,8 +157,8 @@ const Home: React.FC = () => {
               <div className={styles.subOptions}>
                 <ul>
                   <li className={`${styles.option} ${styles.low}`} onClick={() => handleFilter('low', 'priority')}>Low</li>
-                  <li className={`${styles.option} ${styles.normal2}`} onClick={() => handleFilter('normal', 'severity')}>Normal</li>
-                  <li className={`${styles.option} ${styles.high}`} onClick={() => handleFilter('high', 'severity')}>High</li>
+                  <li className={`${styles.option} ${styles.normal2}`} onClick={() => handleFilter('normal', 'priority')}>Normal</li>
+                  <li className={`${styles.option} ${styles.high}`} onClick={() => handleFilter('high', 'priority')}>High</li>
                 </ul>
               </div>
              )}

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './issueTable.module.scss';
 import { IIssue } from '../../entities';
-import { fetchIssues } from '../../services/issueService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -148,10 +147,14 @@ const Table = ({ issuesProps }: issueTableProps) => {
                     ></span>
                   </td>
                   <td>
-                    <span
+                    {issue.severity !== 'normal' && (<span
                       className={`${styles['issue-ball']} ${styles[issue.severity]}`}
                       title={issue.severity}
-                    ></span>
+                    ></span>)}
+                    {issue.severity === 'normal' && (<span
+                      className={`${styles['issue-ball']} ${styles['normal2']}`}
+                      title={issue.severity}
+                    ></span>)}
                   </td>
                   <td>
                     <span
@@ -159,9 +162,10 @@ const Table = ({ issuesProps }: issueTableProps) => {
                       title={issue.priority}
                     ></span>
                   </td>
-                    <td><Link to={`/issue/${issue._id}`}>{issue.subject}</Link></td>
+                    <td><Link to={`/issue/${issue._id}`} className={styles.link}>#{issue?.numberIssue} {issue?.subject}</Link></td>
                   <td>{issue.status}</td>
-                  <td>{issue.assignedTo}</td>
+                  {issue.assignedTo && (<td>{issue.assignedTo.username}</td>)}
+                  {!issue.assignedTo && (<td color={'gray'}>Not asigned</td>)}
                 </tr>
               ))}
           </tbody>

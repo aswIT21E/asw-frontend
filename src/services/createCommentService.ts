@@ -1,10 +1,8 @@
 import { token } from ".";
-
-
-export const createIssue = async (data: any, navigate: (path: string) => void) =>  {
+export const createComment = async (data: any, navigate: (path: string) => void) =>  {
     console.log(data);
     try {
-        await fetch('http://api.asw-fib.net/issues/create', {
+        await fetch(`http://api.asw-fib.net/issues/${data.id}/new-comment`, {
         method: 'POST',
         headers: {
           Authorization: 'Bearer ' + token,
@@ -14,7 +12,6 @@ export const createIssue = async (data: any, navigate: (path: string) => void) =
       }).then(
         response => {
              console.log(response);
-             navigate('/');
 
         })
     } catch (error) {
