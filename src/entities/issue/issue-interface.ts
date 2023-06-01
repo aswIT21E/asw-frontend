@@ -1,4 +1,5 @@
 import type { IUser } from '~/entities';
+import { IComment } from '../comment';
 
 export interface IIssue {
   id?: string;
@@ -17,4 +18,5 @@ export interface IIssue {
   assignedTo?: IUser;
   attachments?: string[];
   deadline?: Date;
+  comments?: IComment[];
 }

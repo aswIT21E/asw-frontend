@@ -1,0 +1,61 @@
+// CommentTable.module.scss
+
+.comment {
+  list-style: none;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
+.commentWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.commentImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.commentInfo {
+  flex: 1;
+}
+
+.commentData {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.commentCreator {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.commentDate {
+  font-size: 12px;
+  color: #888;
+}
+
+.commentContent {
+  margin-top: 5px;
+}
+
+.comment {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+.commentTable {
+  height: 200px; /* Ajusta la altura según tus necesidades */
+  overflow: auto;
+}
+
+.commentList {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
