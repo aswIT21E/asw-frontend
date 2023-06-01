@@ -8,6 +8,7 @@ import CommentTable from "../CommentTable/commentTable";
 import { modifyIssue} from "../../services/modifyIssueService";
 import { lockIssue } from "../../services/lockService";
 import { unlockIssue} from "../../services/unlockService";
+import { updateDeadline } from "../../services/deadlineService";
 
 import { deleteIssue } from "../../services/deleteIssueService";
 import { faCheck, faEdit, faLock, faTrashCan, faUnlock } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 const IssuePage = () => {
+
   const [issue, setIssue] = useState<IIssue>();
   const [comment, setComment] = useState("");
   const [finalcomment, setFinalComment] = useState("");
@@ -28,20 +30,10 @@ const IssuePage = () => {
   const [showLockReason, setShowLockReason] = useState(false);
   const [lockReason, setLockReason] = useState('');
   const [issueLocked, setIssueLocked]= useState(issue?.locked)
-  async function  handleLockIssue() {
-    await setShowLockReason(true);
-  }
+  const [selectedDate, setSelectedDate] = useState<Date|null>(null);
+  const [deadline, setDeadline] = useState<Date|null>(null);
 
-  async function handleLockConfirmation() {
-    await lockIssue(issue?.id,  lockReason);
-    setShowLockReason(false);
-    setLockReason('');
-    setIssueLocked(true)
-  }
- async function handleUnlockIssue(): void {
-    await unlockIssue(issue?.id);
-    setIssueLocked(false)
-  }
+ 
 
   useEffect(() => {
     const fetchDataIssue = async () => {
@@ -52,7 +44,7 @@ const IssuePage = () => {
       setIssue(fetchedIssues);
     };
     fetchDataIssue();
-  }, [finalcomment, valueSelection, issueLocked]);
+  }, [finalcomment, valueSelection, issueLocked, deadline]);
 
 
   const mostrarAcividades = () => {
@@ -113,7 +105,37 @@ const IssuePage = () => {
     setDescription(value);
     setValueSelection('description');
   }
+  async function  handleLockIssue() {
+    await setShowLockReason(true);
+  }
 
+  async function handleLockConfirmation() {
+    await lockIssue(issue?.id,  lockReason);
+    setShowLockReason(false);
+    setLockReason('');
+    setIssueLocked(true)
+  }
+ async function handleUnlockIssue() {
+    await unlockIssue(issue?.id);
+    setIssueLocked(false)
+  }
+  
+
+  async function addDeadline(selectedDate: Date) {
+    await updateDeadline(issue?.id, selectedDate)
+    setDeadline(selectedDate);
+  }
+
+  
+  let estilosDeadline: string;
+
+  if (issue?.deadline && new Date(issue.deadline) < new Date()) {
+    estilosDeadline = "entregaManana";
+  } else if (issue?.deadline && new Date(issue.deadline) < new Date(Date.now() + 86400000 * 3)) {
+    estilosDeadline = "entregaMedioTarde";
+  } else {
+    estilosDeadline = "entregaTarde";
+  }
   
 
   return (
@@ -153,6 +175,8 @@ const IssuePage = () => {
             </div>
           ) : null}
 
+          
+
           <br></br>
           {!editionDescriptionMode && (<span className={styles.descriptionIssue}>{issue?.description}</span>)}
           {!editionDescriptionMode && (<span className={styles.editContainer} >
@@ -172,6 +196,25 @@ const IssuePage = () => {
                 />
             </div>
            )}
+           {issue?.deadline != null ? (
+                estilosDeadline === "entregaManana" ? (
+                  <div>
+                    <br></br>
+                    <span className={styles.entregaManana}> Deadline: {issue?.deadline?.split("T")[0]} </span>
+                  </div>
+            ) : estilosDeadline === "entregaMedioTarde" ? (
+                  <div>
+                    <br></br>
+                    <span className={styles.entregaMedioTarde}> Deadline: {issue?.deadline?.split("T")[0]} </span>
+                  </div>
+                ) : (
+                  <div>
+                    <br></br>
+                    <span className={styles.entregaTarde}> Deadline: {issue?.deadline?.split("T")[0]} </span>
+                  </div>
+                )
+              ) : null}
+
           {/* <span className={styles.descriptionIssue}>{issue?.description}</span> */}
           <br></br>
           <div id="Comentarios">
@@ -379,6 +422,18 @@ const IssuePage = () => {
           )}
         </>
         )}
+        <>
+        <input
+                type="date"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate((e.target.value))}
+              />
+            {selectedDate && (
+              <button onClick={() => addDeadline(selectedDate)}>
+               Add Deadline
+              </button>
+            )}
+        </>
 
         <button className={styles.trashButton} onClick={() => handleDeleteIssue()}>
             <FontAwesomeIcon icon={faTrashCan} className={styles.editButton} />
