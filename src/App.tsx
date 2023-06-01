@@ -6,16 +6,17 @@ import { Login } from './pages/Login/login';
 import { login } from './services/loginService';
 import { AddIssue } from './pages/CRUD/crud';
 import { BulkIssue } from './pages/CRUD/bulk';
+import { Profile } from './pages/Profile/profile';
 
-function App({ children }: { children: ReactNode }) {
+function App() {
+
   const [authenticated, setAuthenticated] = useState(!!localStorage.getItem('token'));
-
+  
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" Component={Home} />
-          <Route path="/issue/:id" Component={IssuePage} />
+          <Route path="/issue/:id" element={<IssuePage />} />
           <Route
             path="/"
             element={
@@ -29,6 +30,7 @@ function App({ children }: { children: ReactNode }) {
           <Route path="/login" element={<Login login={(username, password) => login(username, password, setAuthenticated)} />} />
           <Route path="/issues/newIssue" element={<AddIssue />} />
           <Route path="/issues/bulk" element={<BulkIssue />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </BrowserRouter>
