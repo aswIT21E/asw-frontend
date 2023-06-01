@@ -96,12 +96,10 @@ const Home: React.FC = () => {
             />
           </form>
         </div>
-        <div className={styles['profile-button']}>
-          <button id="irPerfil" onClick={handleProfileClick} className={styles['profile']}>
-            <FontAwesomeIcon icon={faUser} className={styles['profile-icon']} />
-            <span>      Ir al perfil</span>
-          </button>
-        </div>
+          <Link to="/profile" className={styles['profile']}>
+            <span>Ir al perfil</span>
+          </Link>
+
 
         <Link to="/issues/newIssue" className={styles['new-issue-button']}>
           <span>+ New Issue</span>

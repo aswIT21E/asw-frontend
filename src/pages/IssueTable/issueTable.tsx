@@ -164,7 +164,7 @@ const Table = ({ issuesProps }: issueTableProps) => {
                   </td>
                     <td><Link to={`/issue/${issue._id}`} className={styles.link}>#{issue?.numberIssue} {issue?.subject}</Link></td>
                   <td>{issue.status}</td>
-                  {issue.assignedTo && (<td>{issue.assignedTo}</td>)}
+                  {issue.assignedTo && (<td>{issue.assignedTo.username}</td>)}
                   {!issue.assignedTo && (<td color={'gray'}>Not asigned</td>)}
                 </tr>
               ))}
