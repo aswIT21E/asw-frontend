@@ -13,7 +13,23 @@ flex-direction: row;
 .detail-header{
 margin: 0 0 0.5rem;
 }
+.assignList{
+  margin: 0 auto;
+}
 
+.image{
+  width: 40px;
+  height: 40px;
+}
+
+.list {
+  list-style: none;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
 .titleIssue{
 color: #2e3440;
@@ -158,6 +174,19 @@ margin-bottom: 10px;
 text-decoration: none;
 color: inherit;
 }
+.addbutton{
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: #83eede;
+  border: 0;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 10px;
+}
 .trashButton{
   justify-content: center;
   display: flex;
@@ -243,4 +272,78 @@ background-color: red;
   height: 20px;
   border-radius: 50%;
   margin-right: 5px;
+}
+
+.label-ticket {
+  margin-bottom: 10px;
+}
+.labelTicket{
+  margin: 0 auto;
+}
+.assign{
+  margin: 0 auto;
+}
+
+.comment {
+  list-style: none;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
+
+.assign {
+  margin-bottom: 20px;
+  width: 150px;
+  display: grid;
+  /* margin: 0 auto; */
+  border: 0.5px gray solid;
+}
+
+.assign-list {
+  display: flex;
+}
+
+.ticket-user-list {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.user-list-name {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin-right: 5px;
+}
+
+.ticket-user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.plus-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.watchers {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.watchers-list {
+  display: flex;
+}
+
+.ticket-watchers-list {
+  flex-grow: 1;
+  background-color: #ccc;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.icon-nowatch {
+  margin-left: 10px;
+  font-size: 20px;
 }
