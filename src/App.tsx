@@ -4,6 +4,7 @@ import Home from './pages/Home/home';
 import IssuePage from './pages/IssuePage/issuePage';
 
 function App({ children }: { children: ReactNode }) {
+  
   return (
     <BrowserRouter>
       <div className="App">

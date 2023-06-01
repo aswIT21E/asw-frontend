@@ -5,11 +5,13 @@ import { getIssue } from "../../services/getIssueService";
 import { createComment } from '../../services/createCommentService';
 import { useNavigate } from "react-router-dom";
 import CommentTable from "../CommentTable/commentTable";
+import { modifyIssue } from "../../services/modifyIssueService";
 
 const IssuePage = () => {
   const [issue, setIssue] = useState<IIssue>();
   const [comment, setComment] = useState("");
   const [finalcomment, setFinalComment] = useState("");
+  const [valueSelection, setValueSelection] = useState<string>('');
 
   useEffect(() => {
     const fetchDataIssue = async () => {
@@ -20,7 +22,7 @@ const IssuePage = () => {
       setIssue(fetchedIssues);
     };
     fetchDataIssue();
-  }, [finalcomment]);
+  }, [finalcomment, valueSelection]);
 
 
   const mostrarAcividades = () => {
@@ -36,7 +38,7 @@ const IssuePage = () => {
 
   const handleSubmitComment = async (event) => {
     event.preventDefault();
-    const id = issue?.id;
+    const id = issue.id;
     const data = {
       id,
       comment,
@@ -46,6 +48,14 @@ const IssuePage = () => {
     setFinalComment(comment)
     setComment('')
   };
+
+  const handleSelection = (value: string) => {
+    setValueSelection(valueSelection === value ? '' : value);
+  }
+  const handleEdition = async (value: string) => {
+    await modifyIssue(issue?.id, valueSelection, value)
+    setValueSelection('')
+  }
 
   return (
     <div className={styles.issuePage}>
@@ -102,13 +112,13 @@ const IssuePage = () => {
 
       </div>
       <div className={styles.dropdownContainer}>
-        <button onClick={() => {}} className={styles.buttonOps}>
+        <button className={styles.buttonOps} onClick={() => handleSelection('type')}>
             <span
-                className={`${styles.issueBall} `}
+                className={`${styles.issueBall}  ${ issue?.type ? styles[issue.type]: ''}`}
                 title={issue?.type}
             ></span>
             <span className={styles.title}>
-            {issue?.type}               
+            {issue?.type && issue?.type.toUpperCase()}              
             </span>
         </button>
         <div className={styles.dropdown}>
@@ -119,6 +129,133 @@ const IssuePage = () => {
         </ul>
         </div>
         
+        {valueSelection === 'type' && 
+            (<div className={styles.dropdown}>
+                <ul className={styles.dropdownMenu}>
+                    <li className={`${styles.option}`}>
+                        Bug
+                        <span
+                        className={`${styles['issue-ball']} ${styles['bug']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                    <li className={`${styles.option}`}>
+                        Question
+                        <span
+                        className={`${styles['issue-ball']} ${styles['question']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                    <li className={`${styles.option} `}>
+                        Wishlist
+                        <span
+                        className={`${styles['issue-ball']} ${styles['wishlist']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            )
+        }
+        <button className={styles.buttonOps} onClick={() => handleSelection('severity')}>
+            <span
+                className={`${styles.issueBall}  ${ issue?.type ? styles[issue.severity]: ''}`}
+                title={issue?.type}
+            ></span>
+            <span className={styles.title}>
+            {issue?.severity && issue?.severity.toUpperCase()}              
+            </span>
+        </button>
+        {valueSelection === 'severity' && 
+            (<div className={styles.dropdown}>
+                <ul className={styles.dropdownMenu}>
+                    <li className={`${styles.option}`} onClick={() => handleEdition('pending')}>
+                        Pending
+                        <span
+                        className={`${styles['issue-ball']} ${styles['pending']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                    <li className={`${styles.option}`} onClick={() => handleEdition('minor')}>
+                        Minor
+                        <span
+                        className={`${styles['issue-ball']} ${styles['minor']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                    <li className={`${styles.option} `} onClick={() => handleEdition('normal')}>
+                        Normal
+                        <span
+                        className={`${styles['issue-ball']} ${styles['normal']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                    <li className={`${styles.option} `} onClick={() => handleEdition('important')}>
+                        Important
+                        <span
+                        className={`${styles['issue-ball']} ${styles['important']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                    <li className={`${styles.option} `} onClick={() => handleEdition('critical')}>
+                        Critical
+                        <span
+                        className={`${styles['issue-ball']} ${styles['critical']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            )
+        }
+        <button className={styles.buttonOps} onClick={() => handleSelection('priority')}>
+            <span
+                className={`${styles.issueBall}  ${ issue?.priority ? styles[issue.priority]: ''}`}
+                title={issue?.type}
+            ></span>
+            <span className={styles.title}>
+            {issue?.priority && issue?.priority.toUpperCase()}              
+            </span>
+        </button>
+        {valueSelection === 'priority' && 
+            (<div className={styles.dropdown}>
+                <ul className={styles.dropdownMenu}>
+                    <li className={`${styles.option}`} onClick={() => handleEdition('low')}>
+                        Low
+                        <span
+                        className={`${styles['issue-ball']} ${styles['low']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                    <li className={`${styles.option}`}  onClick={() => handleEdition('normal')}>
+                        Normal
+                        <span
+                        className={`${styles['issue-ball']} ${styles['normal2']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                    <li className={`${styles.option} `}  onClick={() => handleEdition('high')}>
+                        High
+                        <span
+                        className={`${styles['issue-ball']} ${styles['high']}`}
+                        title={issue?.type}
+                        >
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            )
+        }
       </div>
       
     </div>

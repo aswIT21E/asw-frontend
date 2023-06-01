@@ -22,8 +22,18 @@
   word-break: break-word;
 }
 
+.issue-ball {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+
 .infoContainer{
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
   padding-top: 2rem;
   flex-direction: column;
@@ -58,14 +68,14 @@ a{
 }
 
 .issuePage{
-  width: 80%;
+  width: 75%;
   display: flex;
   margin: 0;
   padding-top: 5rem;
   flex-direction: row;
 }
 .subOptions{
-  width: 30%;
+  width: 100%;
 }
 
 .subOptions ul {
@@ -94,6 +104,18 @@ a{
   /* Estilos para .dropdownMenu */
   list-style: none;
   padding: 0;
+  
+}
+.dropdownContainer{
+
+  background-color: #f9f9fb !important;
+  border-radius: 3px;
+}
+.option{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px !important;
 }
 
 .options ul {
@@ -106,68 +128,73 @@ a{
   margin-bottom: 10px;
 }
 .buttonOps{
-  justify-content: flex-start;
+    justify-content: flex-start;
     display: flex;
     padding: 10px;
     width: 100%;
     text-align: center;
-    background-color: transparent;
+    background-color: lightgray;
     border: 0;
     align-items: center;
+    margin-bottom: 10px;
+    width: 150px;
 }
 
 li{
   margin-bottom: 10px !important;
   padding: 5px;
+  width: 150px;
+  cursor: pointer;
   &:hover{
     background-color: #f9f9fb;
   }
 }
-.option.bug {
-  border-left: 4px solid red !important;
+.bug {
+  background-color: red;
 }
 
-.option.question {
-  border-left: 4px solid blue;
+.question {
+  background-color: rgb(6, 42, 247);
 }
 
-.option.enhancement {
-  border-left: 4px solid green;
+.normal {
+  background-color: green;
 }
 
-
-.option.pending {
-  border-left: 4px solid grey;
+/* Estilo para pending */
+.wishlist {
+  background-color: grey;
 }
 
 /* Estilos para gravedad */
-.option.minor {
-  border-left: 4px solid blue;
+.minor {
+  background-color: blue;
 }
 
-.option.normal {
-  border-left: 4px solid green;
+.pending {
+  background-color: grey;
 }
 
-.option.normal2 {
-  border-left: 4px solid orange;
-}
-.option.important {
-  border-left: 4px solid orange;
+.important {
+  background-color: orange;
 }
 
-.option.critical {
-  border-left: 4px solid red;
+.critical {
+  background-color: red;
 }
 
-.option.low {
-  border-left: 4px solid green;
+/* Estilos para prioridad */
+.low {
+  background-color: green;
 }
 
-.option.high {
-  border-left: 4px solid red;
+.normal2 {
+  background-color: orange;
 }
 
+.high {
+  background-color: red;
+}
 .issueBall{
     display: flex;
     justify-content: center;

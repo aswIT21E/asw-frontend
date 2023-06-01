@@ -2,7 +2,7 @@ import type { IUser } from '~/entities';
 import { IComment } from '../comment';
 
 export interface IIssue {
-  id?: string;
+  _id?: string;
   numberIssue: number;
   subject: string;
   description: string;

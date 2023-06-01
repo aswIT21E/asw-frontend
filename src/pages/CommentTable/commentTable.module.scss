@@ -48,10 +48,12 @@
   font-size: 14px;
   line-height: 1.5;
   color: #333;
+  width: fit-content;
 }
 .commentTable {
   height: 200px; /* Ajusta la altura según tus necesidades */
   overflow: auto;
+  
 }
 
 .commentList {
