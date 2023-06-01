@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './home.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUser, faFilter, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faUser, faFilter, faCircleArrowRight, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import Table from '../IssueTable/issueTable';
 import { fetchIssues } from '../../services/issueService';
 import { IIssue } from '../../entities';
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
           <span>+ New Issue</span>
         </Link>
         <Link to="/issues/bulk" className={styles['bulk-button']}>
-          <FontAwesomeIcon icon={faFilter} className={styles['bulk-icon']} />
+          <FontAwesomeIcon icon={faFileAlt} className={styles['bulk-icon']} />
         </Link>
       </div>
         <div className={styles['filter-container']}>
