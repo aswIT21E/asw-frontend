@@ -82,11 +82,28 @@ a{
   margin: 0;
   margin-top: 10px;
 }
+.acceptButton{
+  padding-left: 1rem;
+}
 
 .subOptions li {
   margin-bottom: 5px;
 }
 
+.editContainer{
+  padding-left: 10px;
+  color: transparent;
+  display: inline;
+  &:hover{
+    color: gray;
+  }
+}
+
+.editContainerNO{
+  display: flex;
+  color: gray;
+  align-items: center;
+}
 .dropdownText {
   /* Estilos para .dropdownText */
   font-size: 16px;
@@ -137,6 +154,26 @@ a{
     margin-bottom: 10px;
     width: 150px;
 }
+.link{
+  text-decoration: none;
+  color: inherit;
+}
+.trashButton{
+    justify-content: center;
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: #83eede;
+    border: 0;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 150px;
+    border-radius: 1rem;
+}
+.trashText {
+  padding-left: 1rem;
+}
 
 li{
   margin-bottom: 10px !important;
@@ -164,6 +201,7 @@ li{
   background-color: grey;
 }
 
+
 /* Estilos para gravedad */
 .minor {
   background-color: blue;
@@ -175,6 +213,11 @@ li{
 
 .important {
   background-color: orange;
+}
+.editTextarea{
+  max-width: fit-content;
+  height: fit-content;
+  height: 30px;
 }
 
 .critical {

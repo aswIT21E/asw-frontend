@@ -148,10 +148,14 @@ const Table = ({ issuesProps }: issueTableProps) => {
                     ></span>
                   </td>
                   <td>
-                    <span
+                    {issue.severity !== 'normal' && (<span
                       className={`${styles['issue-ball']} ${styles[issue.severity]}`}
                       title={issue.severity}
-                    ></span>
+                    ></span>)}
+                    {issue.severity === 'normal' && (<span
+                      className={`${styles['issue-ball']} ${styles['normal2']}`}
+                      title={issue.severity}
+                    ></span>)}
                   </td>
                   <td>
                     <span
@@ -159,7 +163,7 @@ const Table = ({ issuesProps }: issueTableProps) => {
                       title={issue.priority}
                     ></span>
                   </td>
-                    <td><Link to={`/issue/${issue._id}`}>{issue.subject}</Link></td>
+                    <td><Link to={`/issue/${issue._id}`} className={styles.link}>#{issue?.numberIssue} {issue?.subject}</Link></td>
                   <td>{issue.status}</td>
                   <td>{issue.assignedTo}</td>
                 </tr>

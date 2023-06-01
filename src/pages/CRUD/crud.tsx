@@ -103,7 +103,7 @@ export const AddIssue = () => {
                   >
                     <option value="bug">Bug</option>
                     <option value="question">Pregunta</option>
-                    <option value="enhancement">Mejora</option>
+                    <option value="wishlist">Mejora</option>
                   </select>
                 </div>
                 <div className={styles['dropdown-cont']}>

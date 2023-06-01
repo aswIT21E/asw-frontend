@@ -128,7 +128,7 @@ const Home: React.FC = () => {
                 <ul>
                 <li className={`${styles.option} ${styles.bug}`} onClick={() => handleFilter('bug', 'type')}>Bug</li>
                 <li className={`${styles.option} ${styles.question}`} onClick={() => handleFilter('question', 'type')}>Question</li>
-                <li className={`${styles.option} ${styles.enhancement}`} onClick={() => handleFilter('enhancement', 'type')}>Enhancement</li>
+                <li className={`${styles.option} ${styles.whishlist}`} onClick={() => handleFilter('wishlist', 'type')}>Wishlist</li>
                 </ul>
               </div>
               )}
@@ -159,8 +159,8 @@ const Home: React.FC = () => {
               <div className={styles.subOptions}>
                 <ul>
                   <li className={`${styles.option} ${styles.low}`} onClick={() => handleFilter('low', 'priority')}>Low</li>
-                  <li className={`${styles.option} ${styles.normal2}`} onClick={() => handleFilter('normal', 'severity')}>Normal</li>
-                  <li className={`${styles.option} ${styles.high}`} onClick={() => handleFilter('high', 'severity')}>High</li>
+                  <li className={`${styles.option} ${styles.normal2}`} onClick={() => handleFilter('normal', 'priority')}>Normal</li>
+                  <li className={`${styles.option} ${styles.high}`} onClick={() => handleFilter('high', 'priority')}>High</li>
                 </ul>
               </div>
              )}
