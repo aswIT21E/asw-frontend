@@ -9,7 +9,33 @@ display: flex;
 margin: 0 auto;
 flex-direction: row;
 }
+.buttonComments{
+  background-color: transparent;
+  border: 0;
+  padding: 10px;
+  color: #434456;
+}
+.buttonCommentsSelected{
+  padding-bottom: auto;
+  padding: 10px;
+  background-color: transparent;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: #434456;
+  color: #434456;
+  border-left-width: 0;
+  border-right-width: 0;
+  font-weight: bold;
+  border-top-width: 0;
+}
 
+h2{
+  background-color: #f1f1f4;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  flex-direction: row;
+}
 .detail-header{
 margin: 0 0 0.5rem;
 }
@@ -61,7 +87,6 @@ justify-content: flex-end;
 }
 .descriptionIssue{
   margin: 3px;
-  height: 15em;
   display: flex;
 }
 .subjectIssue{

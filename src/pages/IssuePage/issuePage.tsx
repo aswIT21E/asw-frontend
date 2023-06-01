@@ -5,6 +5,8 @@ import { getIssue } from "../../services/getIssueService";
 import { createComment } from '../../services/createCommentService';
 import { useNavigate } from "react-router-dom";
 import CommentTable from "../CommentTable/commentTable";
+import ActivitiesTable from "../ActivitiesTable/activitiesTable";
+
 import { modifyIssue} from "../../services/modifyIssueService";
 import { lockIssue } from "../../services/lockService";
 import { unlockIssue} from "../../services/unlockService";
@@ -27,7 +29,7 @@ const IssuePage = () => {
   const [editionMode, setEditionMode] = useState<boolean>(false);
   const [viewAssigned, setViewAssigned] = useState<boolean>(false);
   const [viewWatchers, setViewWatchers] = useState<boolean>(false);
-
+  const [selectedButton, setSelectedButton] = useState<string>('comentarios');
 
   const [editionDescriptionMode, setDescriptionEditionMode] = useState<boolean>(false);
   const [subject, setSubject] = useState<string>('');
@@ -49,17 +51,10 @@ const IssuePage = () => {
       setIssue(fetchedIssues);
     };
     fetchDataIssue();
-  }, [finalcomment, valueSelection, issueLocked, deadline]);
+  }, [finalcomment, valueSelection, issueLocked, deadline, selectedButton]);
+ 
 
 
-  const mostrarAcividades = () => {
-    // Lógica para mostrar actividades
-  };
-
-  const mostrarComentarios = () => {
-    // Lógica para mostrar comentarios
-  };
-  console.log(issue?.watchers);
   
   const navigate = useNavigate();
 
@@ -100,6 +95,10 @@ const IssuePage = () => {
 
   const handleDeleteIssue = async () => {
     await deleteIssue(issue?.id);
+  }
+
+  const handleChangeView = (value: string) => {
+    setSelectedButton(value)
   }
 
   const handleChangeSubject = (value: string) => {
@@ -224,36 +223,48 @@ const IssuePage = () => {
           {/* <span className={styles.descriptionIssue}>{issue?.description}</span> */}
           <br></br>
           <div id="Comentarios">
-          <h2 className="comment-h2">
+          <h2 >
             <span id="comment-count"></span>
-            <button className="botoncomments" id="commentB">Comentarios</button>
+            <button className={selectedButton === 'comentarios' ? styles.buttonCommentsSelected : styles.buttonComments} id="commentB" onClick={() => handleChangeView('comentarios')}>Comentarios</button>
             <span id="activity-count"></span>
-            <button className="botoncomments" id="activityB">Actividades</button>
+            <button className={selectedButton === 'actividades' ? styles.buttonCommentsSelected : styles.buttonComments} id="activityB" onClick={() => handleChangeView('actividades')}>Actividades</button>
           </h2>
-          <form 
-        id="comment-form"
-        className={styles['issue-form']}
-        onSubmit={handleSubmitComment}
-      >
-          <fieldset>
-                <textarea
-                  name="description"
-                  id="descp"
-                  rows={7}
-                  placeholder="Por favor, añade un texto descriptivo que ayude a otros a entender mejor esta petición"
-                  value={comment}
-                  width={"663px"}
-                  height={"46px"}
-                  onChange={(event) => setComment(event.target.value)}
-                  data-required="true"
-                />
-            </fieldset>
-            <button type="submit" id="btn-comment">Comentar</button>
-          </form>
-          <div id="comments-section">
-            <ul id="comments-list"></ul>
-          </div>
-          <CommentTable issueProps={issue} setCommentTable={setComment}/>
+          {selectedButton === 'comentarios' &&
+          (
+            <>
+              <form 
+                id="comment-form"
+                className={styles['issue-form']}
+                onSubmit={handleSubmitComment}
+              >
+              <fieldset>
+                    <textarea
+                      name="description"
+                      id="descp"
+                      rows={7}
+                      placeholder="Por favor, añade un texto descriptivo que ayude a otros a entender mejor esta petición"
+                      value={comment}
+                      onChange={(event) => setComment(event.target.value)}
+                      data-required="true"
+                    />
+              </fieldset>
+              <button type="submit" id="btn-comment">Comentar</button>
+              </form>
+              <div id="comments-section">
+                <ul id="comments-list"></ul>
+              </div>
+              <CommentTable issueProps={issue} setCommentTable={setComment}/>
+            </>
+          )}
+          {selectedButton === 'actividades' &&
+          (
+            <>
+              <div id="comments-section">
+                <ul id="comments-list"></ul>
+              </div>
+              <ActivitiesTable activities={issue?.activity} description={issue?.subject}/>
+            </>
+          )}
       </div>
         </div>
         
