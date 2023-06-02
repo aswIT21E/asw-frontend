@@ -7,6 +7,8 @@ import { login } from './services/loginService';
 import { AddIssue } from './pages/CRUD/crud';
 import { BulkIssue } from './pages/CRUD/bulk';
 import { Profile } from './pages/Profile/profile';
+import { EditProfile } from './pages/EditProfile/editProfile';
+import { userInfo } from 'os';
 
 function App() {
 
@@ -31,6 +33,7 @@ function App() {
           <Route path="/issues/newIssue" element={<AddIssue />} />
           <Route path="/issues/bulk" element={<BulkIssue />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/edit-profile" element={<EditProfile />} />
         </Routes>
       </div>
     </BrowserRouter>
