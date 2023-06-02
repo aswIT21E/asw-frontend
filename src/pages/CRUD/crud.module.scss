@@ -7,6 +7,7 @@
 
 .crud-container {
     max-width: 700px;
+    height: 100%;
     margin: 0 auto;
   }
   
@@ -21,8 +22,8 @@
   }
 
   form {
-    position: relative;
     display: flex;
+    position:relative;
     flex-direction: column;
     background-color: rgb(249, 255, 255);
     align-items: center;
@@ -53,7 +54,7 @@ h2 .title {
     width: 700px;
   }
   
-  .main {
+.main {
     flex: 1;
     min-width: 0;
     padding: 1rem;
@@ -106,13 +107,15 @@ textarea:focus {
   
 .side-wrap {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+
 }
   
 .custom-select {
-    height: 400px;
     margin-right: 10px;
+
 }
+
   
 #dropdown {
     border-radius: 3px;

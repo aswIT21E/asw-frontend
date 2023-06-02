@@ -50,7 +50,7 @@ export const Profile = () => {
             <section className={styles['editar-bio']}>
                 <h4>Tu perfil</h4>
                 <p>La gente puede ver todo lo que haces y en qué estás trabajando. Añade una buena bio para que puedan ver la mejor versión de tu perfil.</p>
-                <Link to="/profile/edit-profile" className={styles['edit-profile']}>Editar Perfil</Link>
+                <Link to={"/profile/edit-profile"} className={styles['edit-profile']}>Editar Perfil</Link>
             </section>
             
         </div>
