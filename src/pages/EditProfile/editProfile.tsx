@@ -2,9 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styles from './editProfile.module.scss'
 import { getUserInfo } from "../../services/getUserInfoService";
-import { IUser } from "../../entities";
+import { IIssue, IUser } from "../../entities";
 import {submitEditProfile} from '../../services/submitEditProfileService';
 import { Link, useNavigate } from "react-router-dom";
+
 
 export const EditProfile = () => {
     const navigate = useNavigate();
@@ -24,6 +25,11 @@ export const EditProfile = () => {
         };
 
         fetchUserInfo();
+
+        
+
+
+
     }, []);
 
 
