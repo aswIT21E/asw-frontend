@@ -26,7 +26,6 @@ const Home: React.FC = () => {
   };
   
   useEffect(() => {
-
     const filterIssues = (fetchedIssues: IIssue[]) => {
       const filteredIssues = fetchedIssues.issues.filter((issue) =>
         issue.subject.includes(searchValue) || issue.description.includes(searchValue)
